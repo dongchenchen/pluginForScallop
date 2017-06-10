@@ -1,0 +1,17 @@
+{
+	"manifest_version":2,
+	"name":"bounce",
+	"version":"1.0",
+	"description":"small demo",
+	"browser_action":{
+	    "default_popup":"popup.html"
+	},
+	"permissions":["<all_urls>"],
+	"background":{
+		"page":"background.html"
+	},
+	"content_scripts":[{
+		"matches":["*://www.theguardian.com/*"],
+		"js":["js/jquery-3.2.1.min.js","js/filter_advertisement.js"]
+	}]
+}
