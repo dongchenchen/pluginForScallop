@@ -1,8 +1,9 @@
 var content = $("#article");
 var indexPage = 1;
-var pageSize = Math.ceil(parseInt(content["0"].scrollHeight)/(parseInt($(window).height())-100));
+var articleLength = content["0"].scrollHeight;
+var pageSize = Math.ceil(articleLength/(parseInt($(window).height())*0.9));
 function setContentCSS(){
-	var contentHeight = parseInt($(window).height())-100;
+	var contentHeight = parseInt($(window).height())*0.9;
 	content.css("height",contentHeight);
 	content.css("overflow-pageINdex","hidden");
 	content.css("overflow-y","hidden");
@@ -14,7 +15,7 @@ function drawLinks(){
 	var linkDiv = $("#link_alist");
 	if(document.getElementById("link_alist"))
 	{
-		pageSize = Math.ceil(parseInt(content["0"].scrollHeight)/(parseInt(content.height())));
+		pageSize = Math.ceil(articleLength/(parseInt(content.height())));
 		var linkHtml = "";
 		for(var i = 1; i <= pageSize; i++)
 		{
@@ -38,20 +39,10 @@ function drawLinks(){
     }
 }
 
-function goToPage(pageIndex){
-	if(pageIndex > pageSize || pageIndex < 1)
-	{
-		return;
-	}
-	var scrollTopSize = (pageIndex - 1) * content.offsetHeight;
-	content.scrollTop(scrollTopSize);
-	indexPage = pageIndex;
-}
-
 function alinkAction(){
 	$("#link_alist a").click(function(){
 		var pageIndex = parseInt($(this).html());
-		var scrollTopSize = (pageIndex - 1) * (parseInt($(window).height())-100);
+		var scrollTopSize = (pageIndex - 1) * (parseInt($(window).height())*0.9);
 		content.scrollTop(scrollTopSize);
 	});
 }

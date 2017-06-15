@@ -12,7 +12,7 @@
 	},
 	"content_scripts":[{
 		"matches":["*://www.theguardian.com/*"],
-		"js":["js/jquery-3.2.1.min.js","js/filter_advertisement.js","js/paging.js"],
-		"css":["css/link_style.css"]
+		"js":["js/jquery-3.2.1.min.js","js/filter_advertisement.js","js/paging.js","js/select_translate.js","js/bootstrap.min.js"],
+		"css":["css/link_style.css","css/popup_style.css","css/bootstrap.css"]
 	}]
 }
