@@ -18,6 +18,7 @@ function drawTranslateBlock(e,selectText){
 	$(".selection-sharing").remove();
 	var left = e.clientX+"px";
 	var top = e.clientY+"px";
+	var contentHeight = $("#article").height();
 	var url = "https://api.shanbay.com/bdc/search/?word="+selectText;
 	$.get(url,function(data){
 		if(data.status_code == 0)
@@ -32,6 +33,10 @@ function drawTranslateBlock(e,selectText){
 				+"</span><div class='speak'>"+usPart+usSpeaker+ukPart+ukSpeaker+"</div></h3><div class='content'>"+data.data.definition+"</div></div>";
 				infoCard = infoCard + "</div>";
 				$("#top").append(infoCard);
+				var cardHeight = $("#card_info").height();
+				if((e.clientY+cardHeight)>contentHeight){
+					$("#card_info").css('top',e.clientY-cardHeight);
+				}
 				initClickEvent(data.data);
 			}
 	});

@@ -1,9 +1,9 @@
 var content = $("#article");
 var indexPage = 1;
 var articleLength = content["0"].scrollHeight;
-var pageSize = Math.ceil(articleLength/(parseInt($(window).height())*0.9));
+var pageSize = Math.ceil(articleLength/(parseInt($(window).height())-40));
 function setContentCSS(){
-	var contentHeight = parseInt($(window).height())*0.9;
+	var contentHeight = parseInt($(window).height())-40;
 	content.css("height",contentHeight);
 	content.css("overflow-pageINdex","hidden");
 	content.css("overflow-y","hidden");
@@ -42,7 +42,7 @@ function drawLinks(){
 function alinkAction(){
 	$("#link_alist a").click(function(){
 		var pageIndex = parseInt($(this).html());
-		var scrollTopSize = (pageIndex - 1) * (parseInt($(window).height())*0.9);
+		var scrollTopSize = (pageIndex - 1) * (parseInt($(window).height())-40);
 		content.scrollTop(scrollTopSize);
 	});
 }
